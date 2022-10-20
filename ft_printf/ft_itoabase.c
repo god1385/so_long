@@ -14,18 +14,17 @@
 
 int	ft_numlenbase(unsigned int n, int base)
 {
-	int	count;
+	int					count;
+	unsigned long long	buf;
 
 	count = 0;
+	buf = n;
 	if (n == 0)
+		return (1);
+	while (buf > 0)
 	{
-		count += 1;
-		return (count);
-	}
-	if (n > 0)
-	{
+		buf /= base;
 		count++;
-		base /= 10;
 	}
 	return (count);
 }

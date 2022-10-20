@@ -28,7 +28,7 @@ void	enemy_player(t_data *data, t_tilestruct	*tile, int i)
 	exit(1);
 }
 
-void	enemy_move_up(t_data *data, t_tilestruct *tile, int frame, int i)
+void	enemy_move_up(t_data *data, t_tilestruct *tile, int i)
 {
 	if (tile->type == EMPTY)
 		enemy_grass(data, tile, i);
@@ -36,13 +36,11 @@ void	enemy_move_up(t_data *data, t_tilestruct *tile, int frame, int i)
 	{
 		enemy_player(data, tile, i);
 	}
-	if (tile->type == WALL)
-		frame = 0;
 	else
 		return ;
 }
 
-void	enemy_move_down(t_data *data, t_tilestruct *tile, int frame, int i)
+void	enemy_move_down(t_data *data, t_tilestruct *tile, int i)
 {
 	if (tile->type == EMPTY)
 		enemy_grass(data, tile, i);
@@ -50,8 +48,6 @@ void	enemy_move_down(t_data *data, t_tilestruct *tile, int frame, int i)
 	{
 		enemy_player(data, tile, i);
 	}
-	if (tile->type == WALL)
-		frame = 300;
 	else
 		return ;
 }
@@ -69,13 +65,13 @@ int	enemy(t_data *data)
 		if (frame < 400)
 		{
 			if (frame % 80 == 0)
-				enemy_move_down(data, data->enemy[i].tile->down, frame, i);
+				enemy_move_down(data, data->enemy[i].tile->down, i);
 			frame++;
 		}
 		if (frame >= 400 && frame < 800)
 		{
 			if (frame % 80 == 0)
-				enemy_move_up(data, data->enemy[i].tile->up, frame, i);
+				enemy_move_up(data, data->enemy[i].tile->up, i);
 			frame++;
 		}
 		if (frame == 800)

@@ -60,7 +60,6 @@ char	**map_reader(char *file)
 	char	**map;
 	int		fd;
 	int		i;
-	int		lines;
 
 	map = NULL;
 	map = map_memory(file);
@@ -68,7 +67,6 @@ char	**map_reader(char *file)
 		return (NULL);
 	fd = open(file, O_RDONLY);
 	i = 0;
-	lines = counter(file);
 	while (get_next_line(fd, &map[i++]))
 		;
 	map[i] = NULL;
